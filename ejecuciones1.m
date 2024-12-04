@@ -1,12 +1,15 @@
 clc 
 clear
-database= "golub_cleaned.csv";
+database= "ionospherec.csv";
 
-D = readmatrix(database);
+D = readmatrix(database);%, Range=2);
+
+features = D(:,1:end-1);
+labels = D(:, end);
 
 [m, n] = size(D);
-features = D(:, 1:n-1);
-labels = D(:, end);
+% features = D(:, 1:n-1);
+% labels = D(:, end);
 classes = unique(labels);
 num_classes = numel(classes);
 n= n-1;
@@ -41,10 +44,10 @@ end
 num_executions = 30; % Número de ejecuciones del algoritmo
 all_populations = cell(1, num_executions); % Inicializar celda para almacenar las poblaciones
 all_plots = cell(1,num_executions);
-num_generations = 1000;
+num_generations = 2000;
 num_parents = 15;
 num_matrices = 200;
-mutation_probability = 0.085;
+mutation_probability = 0.1;
 
 for execution = 1:num_executions
     plot_line = [];
@@ -144,7 +147,7 @@ legend;
 
 DA = features * all_populations{1, original_idx_median}(1).matrix;
 DA = [DA, labels];
-csvwrite('projected3d_' + database, DA);
+csvwrite('GSLDA_' + database, DA);
 
 %scatterByLabel(D,[1,2,3]);
 

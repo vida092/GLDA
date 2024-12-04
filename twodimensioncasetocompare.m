@@ -1,11 +1,11 @@
 clc 
 clear
-database= "golub_cleaned.csv";
+database= "tfidf.csv";
 
 D = readmatrix(database);%, Range=2);
 
-features = D(:,1:end-1);
-labels = D(:, end);
+features = D(:,1:end-2);
+labels = D(:, end-1);
 % D = [D(:,2:end-1) labels];
 [m, n] = size(D);
 classes = unique(labels);
@@ -43,13 +43,13 @@ size(train_data)
 
 %%%%%%%% Parámetros %%%%%%%%%%%%%%%%%%%%
 
-num_executions = 10; 
+num_executions = 1; 
 all_populations = cell(1, num_executions); % Aquí se guardan las poblaciones mano
 all_plots = cell(1,num_executions); % Aquí se guardan los números para los plots de cada ejecución
 num_generations = 1000;  
-num_parents = 30;
-num_matrices = 300;
-mutation_probability = 0.1;
+num_parents = 15;
+num_matrices = 250;
+mutation_probability = 0.17;
 
 %%%%%%%%%%%%%%%% Comienzan las   ejecuciones %%%%%%%%%%%%%%%
 for execution = 1:num_executions
