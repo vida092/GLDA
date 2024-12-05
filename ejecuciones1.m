@@ -41,13 +41,13 @@ end
 
 
 
-num_executions = 30; % Número de ejecuciones del algoritmo
+num_executions = 6; % Número de ejecuciones del algoritmo
 all_populations = cell(1, num_executions); % Inicializar celda para almacenar las poblaciones
 all_plots = cell(1,num_executions);
 num_generations = 2000;
 num_parents = 15;
 num_matrices = 200;
-mutation_probability = 0.1;
+mutation_probability = 0.09;
 
 for execution = 1:num_executions
     plot_line = [];
